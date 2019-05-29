@@ -33,6 +33,75 @@ instance.prototype.CHOICES_BUSES = [
 	{ id: '2', label: 'Aux' }
 ]
 
+instance.prototype.CHOICES_HDMI_EDID = [
+	{ id: '0', label: 'Internal' },
+	{ id: '1', label: 'SVGA' },
+	{ id: '2', label: 'XGA' },
+	{ id: '3', label: 'WXGA' },
+	{ id: '4', label: 'FWXGA' },
+	{ id: '5', label: 'SXGA' },
+	{ id: '6', label: 'SXGA+' },
+	{ id: '7', label: 'UXGA' },
+	{ id: '8', label: 'WUXGA' },
+	{ id: '9', label: '720p' },
+	{ id: '10', label: '1080i' },
+	{ id: '11', label: '1080p' }
+]
+
+instance.prototype.CHOICES_RGB_EDID = [
+	{ id: '0', label: 'Internal' },
+	{ id: '1', label: 'SVGA' },
+	{ id: '2', label: 'XGA' },
+	{ id: '3', label: 'WXGA' },
+	{ id: '4', label: 'FWXGA' },
+	{ id: '5', label: 'SXGA' },
+	{ id: '6', label: 'SXGA+' },
+	{ id: '7', label: 'UXGA' },
+	{ id: '8', label: 'WUXGA' }
+]
+
+instance.prototype.CHOICES_SCALAROUTPUT_RESOLUTIONS = [
+	{ id: '0', label: '480p, 576p'},
+	{ id: '1', label: '720p'},
+	{ id: '2', label: '1080p'},
+	{ id: '3', label: 'SVGA'},
+	{ id: '4', label: 'XGA'},
+	{ id: '5', label: 'WXGA'},
+	{ id: '6', label: 'SXGA'},
+	{ id: '7', label: 'FWXGA'},
+	{ id: '8', label: 'SXGA+'},
+	{ id: '9', label: 'UXGA'},
+	{ id: '10', label: 'WUXGA'}
+]
+
+instance.prototype.CHOICES_AUDIO_INPUTS = [
+	{ id: '0', label: 'Audio In 1' },
+	{ id: '1', label: 'Audio In 2' },
+	{ id: '2', label: 'Audio In 3' },
+	{ id: '3', label: 'Audio In 4' },
+	{ id: '4', label: 'Audio In 5/6' },
+	{ id: '5', label: 'SDI In 1' },
+	{ id: '6', label: 'SDI In 2' },
+	{ id: '7', label: 'SDI In 3' },
+	{ id: '8', label: 'SDI In 4' },
+	{ id: '9', label: 'HDMI In 5' },
+	{ id: '10', label: 'HDMI In 6' }
+]
+
+instance.prototype.CHOICES_AUDIO_DELAY_INPUTS = [
+	{ id: '0', label: 'Audio In 1' },
+	{ id: '1', label: 'Audio In 2' },
+	{ id: '2', label: 'Audio In 3' },
+	{ id: '3', label: 'Audio In 4' },
+	{ id: '4', label: 'Audio In 5/6' }
+]
+
+instance.prototype.CHOICES_AUDIO_OUTPUT_CONNECTORS = [
+	{ id: '0', label: 'Audio Out XLR' },
+	{ id: '1', label: 'Audio Out RCA' },
+	{ id: '2', label: 'Phones' }
+]
+
 instance.prototype.updateConfig = function(config) {
 	var self = this;
 
@@ -305,20 +374,7 @@ instance.prototype.actions = function() {
 					label: 'Resolution',
 					id: 'resolution',
 					default: '0',
-					choices: [
-						{ id: '0', label: 'Internal' },
-						{ id: '1', label: 'SVGA' },
-						{ id: '2', label: 'XGA' },
-						{ id: '3', label: 'WXGA' },
-						{ id: '4', label: 'FWXGA' },
-						{ id: '5', label: 'SXGA' },
-						{ id: '6', label: 'SXGA+' },
-						{ id: '7', label: 'UXGA' },
-						{ id: '8', label: 'WUXGA' },
-						{ id: '9', label: '720p' },
-						{ id: '10', label: '1080i' },
-						{ id: '11', label: '1080p' }
-					]
+					choices: self.CHOICES_HDMI_EDID
 				},
 			]
 		},
@@ -339,17 +395,7 @@ instance.prototype.actions = function() {
 					label: 'Resolution',
 					id: 'resolution',
 					default: '0',
-					choices: [
-						{ id: '0', label: 'Internal' },
-						{ id: '1', label: 'SVGA' },
-						{ id: '2', label: 'XGA' },
-						{ id: '3', label: 'WXGA' },
-						{ id: '4', label: 'FWXGA' },
-						{ id: '5', label: 'SXGA' },
-						{ id: '6', label: 'SXGA+' },
-						{ id: '7', label: 'UXGA' },
-						{ id: '8', label: 'WUXGA' }
-					]
+					choices: self.CHOICES_RGB_EDID
 				},
 			]
 		},
@@ -390,19 +436,7 @@ instance.prototype.actions = function() {
 					label: 'Value',
 					id: 'value',
 					default: '0',
-					choices: [
-						{ id: '0', label: '480p, 576p'},
-						{ id: '1', label: '720p'},
-						{ id: '2', label: '1080p'},
-						{ id: '3', label: 'SVGA'},
-						{ id: '4', label: 'XGA'},
-						{ id: '5', label: 'WXGA'},
-						{ id: '6', label: 'SXGA'},
-						{ id: '7', label: 'FWXGA'},
-						{ id: '8', label: 'SXGA+'},
-						{ id: '9', label: 'UXGA'},
-						{ id: '10', label: 'WUXGA'}
-					]
+					choices: self.CHOICES_SCALAROUTPUT_RESOLUTIONS
 				}
 			]
 		},
@@ -572,7 +606,93 @@ instance.prototype.actions = function() {
 				}
 			]
 		},
-
+		'adjust_inputaudio_pgm': {
+			label: 'Adjust input volume level for PGM bus audio',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Audio Input',
+					id: 'audioinput',
+					default: '0',
+					choices: self.CHOICES_AUDIO_INPUTS
+				},
+				{
+					type: 'textinput',
+					label: 'Value: -801 (-INF dB), -800 (-80.0dB)–0 (0.0dB)–100 (10.0dB)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
+		'adjust_inputaudio_pvw': {
+			label: 'Adjust input volume level for PGM bus audio',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Audio Input',
+					id: 'audioinput',
+					default: '0',
+					choices: self.CHOICES_AUDIO_INPUTS
+				},
+				{
+					type: 'textinput',
+					label: 'Value: -801 (-INF dB), -800 (-80.0dB)–0 (0.0dB)–100 (10.0dB)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
+		'adjust_outputaudio_master': {
+			label: 'Adjust output volume level for master out',
+			options: [
+				{
+					type: 'textinput',
+					label: 'Value: -801 (-INF dB), -800 (-80.0dB)–0 (0.0dB)–100 (10.0dB)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
+		'adjust_outputaudio_pvw': {
+			label: 'Adjust output volume level for PVW audio',
+			options: [
+				{
+					type: 'textinput',
+					label: 'Value: -801 (-INF dB), -800 (-80.0dB)–0 (0.0dB)–100 (10.0dB)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
+		'adjust_outputaudio_aux': {
+			label: 'Adjust output volume level for Aux audio',
+			options: [
+				{
+					type: 'textinput',
+					label: 'Value: -801 (-INF dB), -800 (-80.0dB)–0 (0.0dB)–100 (10.0dB)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
+		'adjust_inputaudio_delay': {
+			label: 'Adjust delay time of input audio',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Audio Input',
+					id: 'audioinput',
+					default: '0',
+					choices: self.CHOICES_AUDIO_DELAY_INPUTS
+				},
+				{
+					type: 'textinput',
+					label: 'Value: 0 (0.0 fps)–120 (12.0 fps)',
+					id: 'value',
+					default: '0'
+				}
+			]
+		},
 		'select_output_audio': {
 			label: 'Assign the bus for an audio output connector',
 			options: [
@@ -581,11 +701,7 @@ instance.prototype.actions = function() {
 					label: 'Audio Output Connector',
 					id: 'audiooutputconnector',
 					default: '0',
-					choices: [
-						{ id: '0', label: 'Audio Out XLR'},
-						{ id: '1', label: 'Audio Out RCA'},
-						{ id: '2', label: 'Phones'}
-					]
+					choices: self.CHOICES_AUDIO_OUTPUT_CONNECTORS
 				},
 				{
 					type: 'dropdown',
@@ -721,105 +837,125 @@ instance.prototype.action = function(action) {
 	var cmd;
 	var options = action.options;
 	
+	var stx = '\u0002';
+	
 	switch(action.action) {
 		case 'select_pgm':
-			cmd = '\u0002PGM:' + options.source + ';';
+			cmd = stx + 'PGM:' + options.source + ';';
 			break;
 		case 'select_pvw':
-			cmd = '\u0002PST:' + options.source + ';';
+			cmd = stx + 'PST:' + options.source + ';';
 			break;
 		case 'select_aux':
-			cmd = '\u0002AUX:' + options.source + ';';
+			cmd = stx + 'AUX:' + options.source + ';';
 			break;
 		case 'select_transition_effect':
-			cmd = '\u0002TRS:' + options.transitioneffect + ';';
+			cmd = stx + 'TRS:' + options.transitioneffect + ';';
 			break;
 		case 'set_transition_time':
-			cmd = '\u0002TIM:' + options.transitiontime + ';';
+			cmd = stx + 'TIM:' + options.transitiontime + ';';
 			break;
 		case 'cut':
-			cmd = '\u0002CUT;';
+			cmd = stx + 'CUT;';
 			break;
 		case 'take':
-			cmd = '\u0002TAK;';
+			cmd = stx + 'TAK;';
 			break;
 		case 'pinp_onoff':
-			cmd = '\u0002PPS:' + options.value + ';';
+			cmd = stx + 'PPS:' + options.value + ';';
 			break;
 		case 'split_onoff':
-			cmd = '\u0002SPS:' + options.value + ';';
+			cmd = stx + 'SPS:' + options.value + ';';
 			break;
 		case 'dsk_onoff':
-			cmd = '\u0002DSK' + options.value + ';';
+			cmd = stx + 'DSK' + options.value + ';';
 			break;
 		case 'dsk_composited_onoff':
-			cmd = '\u0002DVW' + options.value + ';';
+			cmd = stx + 'DVW' + options.value + ';';
 			break;
 		case 'automixing_onoff':
-			cmd = '\u0002ATM' + options.value + ';';
+			cmd = stx + 'ATM' + options.value + ';';
 			break;
 		case 'freeze_onoff':
-			cmd = '\u0002FRZ' + options.value + ';';
+			cmd = stx + 'FRZ' + options.value + ';';
 			break;
 		case 'set_edid_hdmi':
-			cmd = '\u0002EDD:' + options.input + ',' + options.resolution + ';';
+			cmd = stx + 'EDD:' + options.input + ',' + options.resolution + ';';
 			break;
 		case 'set_edid_rgb':
-			cmd = '\u0002EDD:' + options.input + ',' + options.resolution + ';';
+			cmd = stx + 'EDD:' + options.input + ',' + options.resolution + ';';
 			break;
 		case 'inputscaletype':
-			cmd = '\u0002VIA:' + options.input + ',' + options.type + ';';
+			cmd = stx + 'VIA:' + options.input + ',' + options.type + ';';
 			break;
 		case 'scalarout_resolution':
-			cmd = '\u0002VOR:' + options.value + ';';
+			cmd = stx + 'VOR:' + options.value + ';';
 			break;
 		case 'scalarout_type':
-			cmd = '\u0002VOA:' + options.value + ';';
+			cmd = stx + 'VOA:' + options.value + ';';
 			break;
 		case 'hdmioutput_colorspace':
-			cmd = '\u0002VOC:' + options.output + ',' + options.colorspace + ';';
+			cmd = stx + 'VOC:' + options.output + ',' + options.colorspace + ';';
 			break;
-		case 'hdmioutput_colorspace':
-			cmd = '\u0002VOD:' + options.output + ',' + options.type + ';';
+		case 'hdmioutput_signaltype':
+			cmd = stx + 'VOD:' + options.output + ',' + options.type + ';';
 			break;
 		case 'pinp_position':
-			cmd = '\u0002PIP:' + options.horizontal + ',' + options.vertical + ';';
+			cmd = stx + 'PIP:' + options.horizontal + ',' + options.vertical + ';';
 			break;
 		case 'split_position':
-			cmd = '\u0002SPT:' + options.value1 + ',' + options.value2 + ';';
+			cmd = stx + 'SPT:' + options.value1 + ',' + options.value2 + ';';
 			break;
 		case 'dsk_selectsource':
-			cmd = '\u0002DSS:' + options.source + ';';
+			cmd = stx + 'DSS:' + options.source + ';';
 			break;
 		case 'dsk_keylevel':
-			cmd = '\u0002KYL:' + options.level + ';';
+			cmd = stx + 'KYL:' + options.level + ';';
 			break;
 		case 'dsk_keygain':
-			cmd = '\u0002KYG:' + options.level + ';';
+			cmd = stx + 'KYG:' + options.level + ';';
 			break;
 		case 'select_channel6input':
-			cmd = '\u0002IPS:' + options.inputconnector + ';';
+			cmd = stx + 'IPS:' + options.inputconnector + ';';
 			break;
 		case 'select_output_video':
-			cmd = '\u0002VOS:' + options.bus + ';';
+			cmd = stx + 'VOS:' + options.bus + ';';
 			break;
+		case 'adjust_inputaudio_pgm':
+			cmd = stx + 'IL1:' + options.audioinput + ',' + options.value + ';';
+			break;
+		case 'adjust_inputaudio_pvw':
+			cmd = stx + 'IL2:' + options.audioinput + ',' + options.value + ';';
+			break;
+		case 'adjust_outputaudio_master':
+			cmd = stx + 'OL1:' + options.value + ';';
+			break;
+		case 'adjust_outputaudio_pvw':
+			cmd = stx + 'OL2:' + options.value + ';';
+			break;
+		case 'adjust_outputaudio_aux':
+			cmd = stx + 'OL3:' + options.value + ';';
+			break;
+		case 'adjust_inputaudio_delay':
+			cmd = stx + 'ADT:' + options.audioinput + ',' + options.value + ';';
+			break;	
 		case 'select_output_audio':
-			cmd = '\u0002AOS:' + options.audiooutputconnector + ',' + options.bus + ';';
+			cmd = stx + 'AOS:' + options.audiooutputconnector + ',' + options.bus + ';';
 			break;
 		case 'hdcp':
-			cmd = '\u0002HCP:' + options.hdcpsetting + ';';
+			cmd = stx + 'HCP:' + options.hdcpsetting + ';';
 			break;
 		case 'preset':
-			cmd = '\u0002MEM:' + options.preset + ';';
+			cmd = stx + 'MEM:' + options.preset + ';';
 			break;
 		case 'gpo_output':
-			cmd = '\u0002GPO:' + options.gponumber + ',' + options.value + ';';
+			cmd = stx + 'GPO:' + options.gponumber + ',' + options.value + ';';
 			break;
 		case 'video_operationmode':
-			cmd = '\u0002MOD:' + options.mode + ';';
+			cmd = stx + 'MOD:' + options.mode + ';';
 			break;
 		case 'cameracontrol':
-			cmd = '\u0002CAM:' + options.camera + ',' + options.memory + ';';
+			cmd = stx + 'CAM:' + options.camera + ',' + options.memory + ';';
 			break;
 	}
 
