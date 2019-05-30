@@ -32,6 +32,12 @@ This module will allow you to control a Roland XS-62S video switcher.
 * Adjust the key gain (semi-transmissive region) for DSK composition
 * Select input connector for channel 6
 * Set the bus assigned to the video output connector
+* Adjust input volume level for PGM bus audio
+* Adjust input volume level for PGM bus audio
+* Adjust output volume level for master out
+* Adjust output volume level for PVW audio
+* Adjust output volume level for Aux audio
+* Adjust delay time of input audio
 * Assign the bus for an audio output connector
 * Set HDCP on/off
 * Call up preset memory
