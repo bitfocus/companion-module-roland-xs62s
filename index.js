@@ -868,16 +868,16 @@ instance.prototype.action = function(action) {
 			cmd = stx + 'SPS:' + options.value + ';';
 			break;
 		case 'dsk_onoff':
-			cmd = stx + 'DSK' + options.value + ';';
+			cmd = stx + 'DSK:' + options.value + ';';
 			break;
 		case 'dsk_composited_onoff':
-			cmd = stx + 'DVW' + options.value + ';';
+			cmd = stx + 'DVW:' + options.value + ';';
 			break;
 		case 'automixing_onoff':
-			cmd = stx + 'ATM' + options.value + ';';
+			cmd = stx + 'ATM:' + options.value + ';';
 			break;
 		case 'freeze_onoff':
-			cmd = stx + 'FRZ' + options.value + ';';
+			cmd = stx + 'FRZ:' + options.value + ';';
 			break;
 		case 'set_edid_hdmi':
 			cmd = stx + 'EDD:' + options.input + ',' + options.resolution + ';';
