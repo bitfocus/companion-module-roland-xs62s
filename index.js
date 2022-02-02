@@ -193,7 +193,7 @@ instance.prototype.destroy = function() {
 instance.prototype.actions = function() {
 	var self = this;
 
-	self.system.emit('instance_actions', self.id, {
+	self.setActions({
 
 		'select_pgm': {
 			label: 'Select channel for PGM / 1',
